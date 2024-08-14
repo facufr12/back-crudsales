@@ -1,16 +1,20 @@
-import express from 'express';
-import fetch from 'node-fetch'; // Usar la sintaxis de importación de ES Modules
 
+const express = require("express");
+const fetch = require("node-fetch"); // Asegúrate de instalar esta dependencia con `npm install node-fetch`
 const app = express();
-const port = process.env.PORT || 3000; // Usa el puerto proporcionado por Render o 3000 localmente
+const port = 3000; // Verifica si este es el puerto correcto
 
-// URL de tu Google Apps Script (reemplaza con la URL de tu script)
-const apiUrl = "https://script.google.com/macros/s/AKfycby3orhI-nzJps1yfkDe45bz6Le5VU5bdDxAKdbK-bwRIu2E8uprlbgW1hHtFZ3WdzoZig/exec";
+// URL de tu Google Apps Script
+const apiUrl =
+  "https://script.google.com/macros/s/AKfycby3orhI-nzJps1yfkDe45bz6Le5VU5bdDxAKdbK-bwRIu2E8uprlbgW1hHtFZ3WdzoZig/exec";
 
 // Configurar CORS para permitir acceso desde cualquier origen
 app.use((req, res, next) => {
   res.header("Access-Control-Allow-Origin", "*");
-  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+  res.header(
+    "Access-Control-Allow-Headers",
+    "Origin, X-Requested-With, Content-Type, Accept"
+  );
   next();
 });
 
@@ -32,5 +36,5 @@ app.get("/data", async (req, res) => {
 });
 
 app.listen(port, () => {
-  console.log(`Servidor escuchando en el puerto ${port}`);
+  console.log(`Servidor escuchando en http://localhost:${port}`);
 });
